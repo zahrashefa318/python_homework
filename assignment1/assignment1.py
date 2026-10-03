@@ -50,7 +50,7 @@ def data_type_conversion(value=None,target_type=None):
         if value is None or target_type is None:
             raise ValueError("There are two arguments required: value and target type")
         if target_type not in ["str","int","float"]:
-            raise AttributeError(f"{target_type} is not in['int','sting','float'].")
+            return f"{target_type} is not in['int','sting','float']."
         target_type=target_type.lower()
          
         if target_type =="float":
@@ -66,8 +66,7 @@ def data_type_conversion(value=None,target_type=None):
            return "The value should be number(integer or float) and the target type should be string,int,and float."
     except ValueError:
         return f"You can't convert {value} into a {target_type}."
-    except AttributeError:
-        raise
+    
     
          
 
