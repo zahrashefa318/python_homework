@@ -13,9 +13,9 @@ def calc(number1=None,number2=None,operator="Multiply"):
     try:
         if number1 is None or number2 is None or operator is None:
             raise ValueError("First number, second number and the operator is required.")
+        operator=operator.lower()
         if not isinstance(number1,(int,float)) or not isinstance(number2,(int,float)):
             return f"You can't {operator} those values!"
-        operator=operator.lower()
         if operator == "multiply":
             return number1 * number2
         elif operator == "add":
@@ -28,11 +28,11 @@ def calc(number1=None,number2=None,operator="Multiply"):
             return number1 - number2
         elif operator == "modulo":
             if number2 == 0:
-                raise "You can't divide by 0!"
+                return "You can't divide by 0!"
             return number1 % number2
         elif operator =="int_divide":
             if number2 == 0:
-                raise ZeroDivisionError("You can't divide by 0!")
+                return "You can't divide by 0!"
             return number1 // number2
         elif operator == "power":
             return number1 ** number2
@@ -143,7 +143,7 @@ def student_scores(meanOrbest,**student_score):
             average=total/len(student_score)
             return average
         elif meanOrbest == "best":
-            max_value=0
+            max_value=next(iter(student_score.values()))
             for key,val in student_score.items():
                 if val > max_value:
                     max_value=val
@@ -198,36 +198,30 @@ def hangman(secret,guess):
 
 
 #Task 10: Pig Latin, Another String Manipulation Exercise------------------------------------------
-def pig_latin(word):
-    try:
-        splited_sentence=word.split()
-        latin_sentence=[]
-        vowels=['a','e','i','o','u']
-        
-        for w in splited_sentence:
-            splitted_word=list(w)
+def pig_latin(sentence):
+    splitted_sentence=sentence.split()
+    vowels=['a','e','i','o','u']
+    final_result=[]
+    for w in splitted_sentence:
+        splitted_word=list(w)
+        if splitted_word[0] in vowels:
+            w=w + "ay"
+            final_result.append(w)
+        else:
             first_consonents_in_word=[]
             previous_letter=""
-            if splitted_word[0] in vowels:
-                return w + "ay"
-            else:
-                for letter in splitted_word:
-                    if (letter not in vowels) or (letter =="u" and previous_letter=="q"):
-                        previous_letter=letter
-                        first_consonents_in_word.append(letter)
-                        
-                    else:
-                        break
-        
-                    
-            consonent_count=len(first_consonents_in_word)       
-            result=splitted_word[consonent_count:] + first_consonents_in_word
+            for letter in splitted_word:
+                if (letter not in vowels) or (letter =="u" and previous_letter=="q"):
+                    previous_letter=letter
+                    first_consonents_in_word.append(letter)
+                                    
+                else:
+                    break
+            consonen_count=len(first_consonents_in_word)
+            result=splitted_word[consonen_count:] + first_consonents_in_word
             result="".join(result) + "ay"
-            latin_sentence.append(result)
-
-        return " ".join(latin_sentence)
-    except Exception:
-        raise
+            final_result.append(result)
+    return " ".join(final_result)
 
 
 
