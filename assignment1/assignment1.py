@@ -28,7 +28,7 @@ def calc(number1=None,number2=None,operator="Multiply"):
             return number1 - number2
         elif operator == "modulo":
             if number2 == 0:
-                raise ZeroDivisionError("You can't divide by 0!")
+                raise "You can't divide by 0!"
             return number1 % number2
         elif operator =="int_divide":
             if number2 == 0:
@@ -40,8 +40,7 @@ def calc(number1=None,number2=None,operator="Multiply"):
             return "Allowed operators in this function: Divide,Subtract,Multiply,Add,Modulo,Int_divide,Power"
     except ValueError:
         raise
-    except ZeroDivisionError:
-        raise
+    
     
 #--------------------------------------------------------------------------------------------------
 
@@ -86,13 +85,13 @@ def grade(*args):
         if len(args) == 0:
             raise ZeroDivisionError("Zero score")
         average= total/len(args)
-        if average in range(90,101):
+        if average >= 90 and average <=100:
             grade="A"
-        elif average in range(80,89):
+        elif average >= 80 and average<=89:
             grade="B"
-        elif average in range(70,79):
+        elif average >= 70 and average <= 79:
             grade="C"
-        elif average in range(60,69):
+        elif average >=60 and average <= 69:
             grade="D"
         elif average < 60:
             grade="F"
