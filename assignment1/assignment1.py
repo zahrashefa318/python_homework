@@ -10,9 +10,9 @@ def greet(name):
 
 #Task 3: Calculator
 def calc(number1=None,number2=None,operator="Multiply"):
-    try:
+    
         if number1 is None or number2 is None or operator is None:
-            raise ValueError("First number, second number and the operator is required.")
+            return "First number, second number and the operator is required."
         operator=operator.lower()
         if not isinstance(number1,(int,float)) or not isinstance(number2,(int,float)):
             return f"You can't {operator} those values!"
@@ -38,8 +38,7 @@ def calc(number1=None,number2=None,operator="Multiply"):
             return number1 ** number2
         else:
             return "Allowed operators in this function: Divide,Subtract,Multiply,Add,Modulo,Int_divide,Power"
-    except ValueError:
-        raise
+    
     
     
 #--------------------------------------------------------------------------------------------------
@@ -73,9 +72,9 @@ def data_type_conversion(value=None,target_type=None):
 
 #Task 5: Grading System, Using *args --------------------------------------------------------------
 def grade(*args):
-    try:
+    
         if not all(isinstance(score,(int,float))for score in args):
-            raise ValueError("Invalid data was provided.")
+            return "Invalid data was provided."
         total=0
         average=0
         grade=""
@@ -97,15 +96,12 @@ def grade(*args):
         else:
             return"Not standard records"
         return grade
-    except ValueError:
-        return "Invalid data was provided."
-    except ZeroDivisionError:
-        raise
+    
 
 
 #Task 6: Use a For Loop with a Range---------------------------------------------------------------
 def repeat(word=None,count=None):
-    try:
+    
         if word is None or count is None:
             raise TypeError("Two arguments required: word and count")
         if not isinstance(count,int):
@@ -116,14 +112,14 @@ def repeat(word=None,count=None):
 
         return repeated_words
 
-    except TypeError:
-        raise
+    
+
 
 
             
 #Task 7: Student Scores, Using **kwargs -----------------------------------------------------------
 def student_scores(meanOrbest,**student_score):
-    try:
+    
         for key,val in student_score.items():
             if not isinstance(key,str) or not isinstance(val,(int,float)):
                 raise TypeError("The key should be string and the value should be integer or float.")
@@ -149,15 +145,12 @@ def student_scores(meanOrbest,**student_score):
             for key,value in student_score.items():
                 if value == max_value:
                    return key
-    except TypeError:
-        raise
-    except ValueError:
-        raise
+    
 
 
 #Task 8: Titleize, with String and List Operations ------------------------------------------------
 def titleize(some_string):
-    try:
+    
         words=some_string.split()
         capitalized_words=[]
         small_words=["a", "on", "an", "the", "of", "and", "is","in"]
@@ -174,13 +167,12 @@ def titleize(some_string):
 
         return " ".join(capitalized_words) 
     
-    except Exception:
-        raise
+    
 
 
 #Hangman, with more String Operations ------------------------------------------------------------
 def hangman(secret,guess):
-    try:
+    
         if not isinstance(secret,str) or not isinstance(guess,str):
             raise TypeError("The secret and guess should be string")
         secret=secret.lower()
@@ -192,8 +184,7 @@ def hangman(secret,guess):
             else:
                 answer.append("_")
         return "".join(answer)
-    except TypeError:
-        raise
+    
 
 
 #Task 10: Pig Latin, Another String Manipulation Exercise------------------------------------------
