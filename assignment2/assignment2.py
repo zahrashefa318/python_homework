@@ -8,17 +8,28 @@ minutes1={}
 minutes2={}
 minutes_set=set()
 minutes_list =[]
+
+
+#Helper function for reading files--------------------------------------------------------
+def read_file(file_name):
+    rows=[]
+    try:
+        with open(file_name,"r") as file:
+            reader=csv.reader(file)
+            for row in reader:
+                rows.append(row)
+        return rows
+    except Exception as e:
+        print(f"An error occurred : {type(e).__name__}")
+
+
 #Task 2: Read a CSV File----------------------------------------------------------------
 def read_employees():
     rows=[]
     cols=[]
     all_rows=[]
     try:
-        with open('../csv/employees.csv','r') as file:
-            file_content=csv.reader(file)
-            for row in file_content:
-                all_rows.append(row)
-            
+        all_rows=read_file("../csv/employees.csv")   
         cols=all_rows[0]
 
         for row in all_rows[1:]:
@@ -120,12 +131,8 @@ def read_minutes():
         min2_rows=[]
         min1_dic={}
         min2_dic={}
-        with open('../csv/minutes1.csv','r')as file1, open('../csv/minutes2.csv','r')as file2:
-            minute1_content=csv.reader(file1)
-            minute2_content=csv.reader(file2)
-            for min1,min2 in zip(minute1_content,minute2_content):
-                min1_rows.append(min1)
-                min2_rows.append(min2)
+        min1_rows=read_file("../csv/minutes1.csv")
+        min2_rows=read_file("../csv/minutes2.csv")
         min1_fields=min1_rows[0]
         min2_fields=min2_rows[0]
         min1_rows=min1_rows[1:]
