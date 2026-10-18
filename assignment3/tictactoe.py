@@ -44,19 +44,7 @@ class Board:
         else:
             self.turn = "X"
 
-    def move(self, move_string):
-        if not move_string in Board.valid_moves:
-            raise TictactoeException("That's not a valid move.")
-        move_index = Board.valid_moves.index(move_string)
-        row = move_index // 3 # row
-        column = move_index % 3 #column
-        if self.board_array[row][column] != " ":
-            raise TictactoeException("That spot is taken.")
-        self.board_array[row][column] = self.turn
-        if self.turn == "X":
-            self.turn = "O"
-        else:
-            self.turn = "X"
+    
     
     def whats_next(self):
         cat = True
@@ -105,11 +93,11 @@ class Board:
 board=Board()
 def game():
     print('First move is for user : X. You select the move from this list : "upper left", "upper center", "upper right", "middle left", "center", "middle right", "lower left", "lower center", "lower right"')
-    try:
-        continue_game = True
+   
+    continue_game = True
 
-        while continue_game:
-
+    while continue_game:
+        try:
             move_string=input("Enter your move :")
             board.move(move_string)
             game_status=board.whats_next()
@@ -121,8 +109,8 @@ def game():
             
 
             print(board)
-    except TictactoeException:
-        raise 
+        except TictactoeException as e:
+            print(e) 
         
 game()
 

@@ -19,7 +19,8 @@ def employee_file_reader():
 
         full_names=[name+" "+last for name,last in zip(fnames,lnames)]
         containing_e=[name for name in full_names if "e" in name ]
-        print(containing_e)
+        print(f'Full names : {full_names}')
+        print(f'Names containing e : {containing_e}')
 
     except Exception as e:
         print(f"An error happened: {e}")
