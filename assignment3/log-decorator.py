@@ -15,7 +15,7 @@ def logger_decorator(func):
     def wrapper(*args,**kwargs):
         value=func(*args, **kwargs)
         logger.info(f"Function_name: {func.__name__}, Positional_args: { args if args else "None"}, Keyword_args: {kwargs if kwargs else "None"}, Returned_value: {value} ")
-        
+        return value
     return wrapper
 #A function that can take tuple of args or key word args or both .
 @logger_decorator

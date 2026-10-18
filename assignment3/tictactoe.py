@@ -103,8 +103,8 @@ def game():
             game_status=board.whats_next()
             
             if game_status[0]:
-                print(game_status[1])
                 continue_game=False
+                
             print(game_status[1])
             
 

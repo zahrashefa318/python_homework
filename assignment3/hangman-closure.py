@@ -5,7 +5,7 @@ def make_hangman(secret_word):
     def hangman_closure(letter):
         guesses.append(letter)
         answer=[]
-        answer=[letter if letter in guesses else "_" for letter in secret_word]
+        answer=[ch if ch in guesses else "_" for ch in secret_word]
         answer="".join(answer)
         print(answer)
         if answer==secret_word:

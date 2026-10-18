@@ -11,7 +11,7 @@ class Point:
         distance=(other.x - self.x)**2 + (other.y - self.y)**2
         return round(sqrt(distance))
 
-    def ___str__(self):
+    def __str__(self):
         return f"Point({self.x},{self.y})" 
 
 
@@ -38,6 +38,6 @@ vector1=Vector(2,7)
 vector2=Vector(0,9)
 print(vector1)
 print(vector2)
-returned_vector=vector1.add_vectors(vector2)
+returned_vector=vector1 + vector2
 print(f"class type: {type(returned_vector).__name__}")
 print(returned_vector)
