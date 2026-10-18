@@ -1,0 +1,10 @@
+INFO - Function_name: argument_type, Positional_args: ('zahra', 'shefa', 30), Keyword_args: None, Returned_value: [['zahra', 'str'], ['shefa', 'str'], [30, 'int']]  - 2026-10-16 20:12:06
+INFO - Function_name: argument_type, Positional_args: None, Keyword_args: {'name': 'zahra', 'lastname': 'shefa', 'age': 28}, Returned_value: [['zahra', 'str'], ['shefa', 'str'], [28, 'int']]  - 2026-10-16 20:12:06
+INFO - Function_name: argument_type, Positional_args: ('zahra', 25, True), Keyword_args: None, Returned_value: [['zahra', 'str'], [25, 'int'], [True, 'bool']]  - 2026-10-16 20:12:06
+INFO - Function_name: argument_type, Positional_args: ('zahra', False), Keyword_args: None, Returned_value: [['zahra', 'str'], [False, 'bool']]  - 2026-10-16 20:12:06
+INFO - Function_name: argument_type, Positional_args: (1, 2, 3, 'zahra', 'shefa'), Keyword_args: {'a': '1'}, Returned_value: [[1, 'int'], [2, 'int'], [3, 'int'], ['zahra', 'str'], ['shefa', 'str'], ['1', 'str']]  - 2026-10-16 20:12:06
+INFO - Function_name: sleep_time, Positional_args: None, Keyword_args: None, Returned_value: One second  - 2026-10-16 20:12:07
+INFO - Function_name: greeting, Positional_args: None, Keyword_args: None, Returned_value: None  - 2026-10-16 20:12:07
+INFO - Function_name: positioal_args, Positional_args: (1, 2, 3, 'a'), Keyword_args: None, Returned_value: True  - 2026-10-16 20:12:07
+INFO - Function_name: positioal_args, Positional_args: None, Keyword_args: None, Returned_value: None  - 2026-10-16 20:12:07
+INFO - Function_name: kw_args, Positional_args: None, Keyword_args: {'name': 'zahra', 'age': 22}, Returned_value: <function logger_decorator at 0x0000025F4E7A8D60>  - 2026-10-16 20:12:07
