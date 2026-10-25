@@ -54,8 +54,8 @@ print(clean_data)
 clean_data["Age"]=pd.to_numeric(clean_data["Age"],errors="coerce")
 print(clean_data)
 
-clean_data["Salary"]=pd.to_numeric(clean_data["Salary"], errors="coerce")
 clean_data["Salary"]=clean_data["Salary"].replace(("unknown","n/a"), "NaN")
+clean_data["Salary"]=pd.to_numeric(clean_data["Salary"], errors="coerce")
 print(clean_data)
 
 clean_data["Age"]=clean_data["Age"].fillna(clean_data["Age"].mean())
