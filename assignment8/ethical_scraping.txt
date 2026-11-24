@@ -1,3 +1,4 @@
+#Task 5: Ethical Web Scraping
 Some parts of Wikipedia are restricted from crawling, such as `/w/`, `/api/`, `/trap/`, and special pages like `/wiki/Special:`. There are also many restricted pages related to deletion, copyright problems, discussions, and administrative pages.
 
 There are also specific rules for different user agents. Some bots, such as `MJ12bot` and `Mediapartners-Google*`, are completely disallowed from crawling the website, while some other bots have different rules, such as a crawl delay. 

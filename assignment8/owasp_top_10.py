@@ -1,3 +1,4 @@
+#Task 6: Scraping Structured Data--------------------------------
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as chromeService
 from webdriver_manager.chrome import ChromeDriverManager

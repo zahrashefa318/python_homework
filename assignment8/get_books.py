@@ -7,14 +7,10 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
 from time import sleep
 import pandas as pd
 import json
-from urllib.robotparser import RobotFileParser
 
-robot_parser=RobotFileParser()
-robot_parser.set_url("https://durhamcounty.bibliocommons.com/robots.txt")
-robot_parser.read()
 
 driver=webdriver.Chrome(service=chromeService(ChromeDriverManager().install()))
-URL="https://durhamcounty.bibliocommons.com/v2/search?query=learning%20spanish&searchType=smart"
+URL="https://books.toscrape.com/"
 
 
 def retry_and_delay(driver,url,max_attempts=3):
@@ -33,42 +29,27 @@ def retry_and_delay(driver,url,max_attempts=3):
 
 
 result=[]
-while True:
-    print(URL)
-    print("Allowed:", robot_parser.can_fetch("*", URL))
-    if not robot_parser.can_fetch("*",URL):
-         print(f"This url:{URL} is not allowed to scarp.")
-         break
+retry_and_delay(driver,URL)           
+while True: 
+    article_elements=driver.find_elements(By.XPATH,"//li//article[contains(@class,'product_pod')]")
+    for article in article_elements:
+         title=article.find_element(By.XPATH,".//h3//a").get_attribute("title")
+         star_rating=article.find_element(By.XPATH,".//p[contains(@class,'star-rating')]").get_attribute("class").split()[-1]
+         price=article.find_element(By.XPATH,".//div[contains(@class,'product_price')]/p[contains(@class,'price_color')]").text
+         dic={
+              "Title":title,
+              "Star_Rating":star_rating,
+              "Price":price
+         }
+         result.append(dic)
 
-    retry_and_delay(driver,URL)
-            
-    li_elements=driver.find_elements(By.CSS_SELECTOR,'div.col-md-12.results-list-items li')
-   
-
-    for i in li_elements:
-        title_element=i.find_element(By.CSS_SELECTOR,'span.title-content')
-        Title=title_element.text.strip()
-
-        author_elements=i.find_elements(By.CSS_SELECTOR,'a.author-link')
-        Author=";".join(a.text.strip()for a in author_elements)
-        
-        date_and_Format_div=i.find_element(By.CSS_SELECTOR,'div.cp-format-info')
-        format_year_element=date_and_Format_div.find_element(By.CSS_SELECTOR,'span.display-info-primary')
-        Format_Year=format_year_element.text
-
-        dic={"Title":Title,"Author":Author,"Format-Year": Format_Year}
-        result.append(dic)
-    #Find the next button in current page
-    nextbtn=driver.find_element(By.CSS_SELECTOR,'section li.cp-pagination-item.pagination__next-chevron')
-    next_btn_classes=nextbtn.get_attribute('class')
-    print("Current URL:", URL)
-    print("Next button classes:", next_btn_classes)
-    if "pagination-item--disabled" in next_btn_classes:
-         break
-    URL=nextbtn.find_element(By.CSS_SELECTOR,'a').get_attribute('href')
-     
+    next_btn=driver.find_elements(By.XPATH,"//li[@class='next']/a")
+    if not next_btn:
+        break
+    next_url=next_btn[0].get_attribute("href")
     sleep(2)
-
+    retry_and_delay(driver,next_url)
+   
 books_dataset=pd.DataFrame(result)
 print(books_dataset)
 
