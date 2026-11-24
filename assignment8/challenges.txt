@@ -1,0 +1,5 @@
+The first challenge I faced was that the content I needed to scrape was not directly available on the provided page. I first found the starting element on the given page, then extracted the link to the page where the required content was located.
+
+The second challenge was finding the links because they were inside list items, the list items were inside an ordered list, and the ordered list was inside an article tag. To get those links, I used XPath. I first found the parent element, then moved to the following sibling, and finally located the links I needed.
+
+The third challenge was saving a list of dictionaries into a CSV file. At first, I simply wrote the list into the CSV file, but only the dictionary keys were saved instead of the values. Then I realized that the `csv` module has a specific method called `DictWriter` for writing dictionaries into CSV files. I used `DictWriter`, and finally all the data was saved as expected.

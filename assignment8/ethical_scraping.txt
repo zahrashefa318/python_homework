@@ -1,0 +1,5 @@
+Some parts of Wikipedia are restricted from crawling, such as `/w/`, `/api/`, `/trap/`, and special pages like `/wiki/Special:`. There are also many restricted pages related to deletion, copyright problems, discussions, and administrative pages.
+
+There are also specific rules for different user agents. Some bots, such as `MJ12bot` and `Mediapartners-Google*`, are completely disallowed from crawling the website, while some other bots have different rules, such as a crawl delay. 
+
+Ethical scraping is important because if we scrape a website too aggressively, the server may become overloaded or even go down. Also, the website may block our IP address or block our access if we send too many requests, so we should always respect the website rules and avoid sending requests too quickly.
