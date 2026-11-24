@@ -40,7 +40,7 @@ for link in links:
 
 print(vul_list)
 
-with open("owasp_top_10.csv","w") as file:
+with open("owasp_top_10.csv","w",newline="") as file:
     writer=csv.DictWriter(file,fieldnames=["Title","Link"])
     writer.writeheader()
     writer.writerows(vul_list)

@@ -28,7 +28,7 @@ def retry_and_delay(driver,url,max_attempts=3):
 
 
 
-result=[]
+results=[]
 retry_and_delay(driver,URL)           
 while True: 
     article_elements=driver.find_elements(By.XPATH,"//li//article[contains(@class,'product_pod')]")
@@ -38,10 +38,10 @@ while True:
          price=article.find_element(By.XPATH,".//div[contains(@class,'product_price')]/p[contains(@class,'price_color')]").text
          dic={
               "Title":title,
-              "Star_Rating":star_rating,
+              "Rating":star_rating,
               "Price":price
          }
-         result.append(dic)
+         results.append(dic)
 
     next_btn=driver.find_elements(By.XPATH,"//li[@class='next']/a")
     if not next_btn:
@@ -50,7 +50,7 @@ while True:
     sleep(2)
     retry_and_delay(driver,next_url)
    
-books_dataset=pd.DataFrame(result)
+books_dataset=pd.DataFrame(results)
 print(books_dataset)
 
 #Task 4---------------------------------------------------------------------
