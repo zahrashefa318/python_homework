@@ -23,7 +23,7 @@ def retry_and_delay(driver,url,max_attempts=3):
                     wait=2 * attempt
                     print(f"Waiting {wait} seconds before next attempt.")
                     sleep(wait)
-    print("Giving up on {URL} after {max_attempts} attempts.")
+    print(f"Giving up on {URL} after {max_attempts} attempts.")
     return False
 
 
